@@ -3,6 +3,14 @@
 # spotifyctl.sh
 #
 # control spotify-player over CLI
+#
+
+S_PID=$(pidof -s spotify || pidof -s .spotify-wrapped)
+if [ -z "$S_PID" ]; then
+	/usr/bin/notify-send "Spotify not running..."
+	exit 0	
+fi
+
 
 play() {
 	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play
@@ -23,6 +31,7 @@ next() {
 prev() {
 	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous
 }
+
 
 case "$1" in
 	play)
