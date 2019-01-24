@@ -27,7 +27,7 @@ prev() {
 case "$1" in
 	play)
 		play;;
-	pause)
+	pause|stop)
 		pause;;
 	playpause_toggle)
 		playpause_toggle;;
@@ -37,6 +37,6 @@ case "$1" in
 		prev;;
 	
 	*)
-	echo "Usage: $0 (play|pause|playpause_toggle|next|prev)";;
+	echo "Usage: $0 (play|pause|stop|playpause_toggle|next|prev)";;
 esac
 
